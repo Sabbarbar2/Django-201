@@ -4,10 +4,12 @@
 {% block title %}Changed the title of the homepage{% endblock %}
 
 {% block body %}
-    {% for post in posts %}
+    <div id="posts-container">
+      {% for post in posts %}
 
-      <!-- component  from https://tailwindcomponents.com/component/post-artical-->
-        {% include "includes/post.html" with post=post show_detail_link=True %}
+        <!-- component  from https://tailwindcomponents.com/component/post-artical-->
+          {% include "includes/post.html" with post=post show_detail_link=True %}
 
-    {% endfor %}
+      {% endfor %}
+    </div>
 {% endblock %}
