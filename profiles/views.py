@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.views.generic import DetailView
 
 from feed.models import Post
+from followers.models import Follower
 
 class ProfileDetailView(DetailView):
     http_method_names = ["get"]
@@ -15,5 +16,5 @@ class ProfileDetailView(DetailView):
         user = self.get_object()
         context = super().get_context_data(**kwargs)
         context['total_posts'] = Post.objects.filter(author=user).count()
-        #context['total_followers'] = to do followers
+        context['total_followers'] = Follower.objects.filter(followed_by=user).count()
         return context
